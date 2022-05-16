@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+
 using Inkasign.Models;
 
-namespace Inkasign.Controllers;
+namespace appPolnice.Controllers;
 
 public class HomeController : Controller
 {
