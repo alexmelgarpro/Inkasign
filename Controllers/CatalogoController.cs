@@ -48,8 +48,7 @@ namespace Inkasign.Controllers
             return View(objProduct);
         }
 
-
-       public async Task<IActionResult> Add(int? id){
+        public async Task<IActionResult> Add(int? id){
            var userID = _userManager.GetUserName(User);
            if(userID == null){
                ViewData["Message"] = "Por favor debe loguearse antes de agregar un producto";
@@ -69,5 +68,8 @@ namespace Inkasign.Controllers
            }
 
        }
+
+
+
 }
 }
