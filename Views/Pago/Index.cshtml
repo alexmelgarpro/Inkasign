@@ -21,19 +21,15 @@
         <!-- Formulario -->
         <form method="post" asp-action="Pagar">
             <center><div class="grupo">
-                <label asp-for="MontoTotal" class="control-label">MONTO TOTAL</label>
-                <input asp-for="MontoTotal" data-thousands="," data-decimal="." maxlength="8" autocomplete="off" readonly/>
-            </div></center>
-            <br>
-
-            <center><div class="grupo">
                 <label for="inputNumero">NÚMERO DE TARJETA</label>
                 <input type="text" asp-for="NumeroTarjeta" maxlength="16" autocomplete="off">
             </div></center>
+            <br>
             <center><div class="grupo">
                 <label for="inputNombre">NOMBRE</label>
                 <input type="text" asp-for="NombreTarjeta" maxlength="19" autocomplete="off">
             </div></center>
+            <br>
             <div class="flexbox">
                <center> <div class="grupo expira">
                     <label for="selectMes">EXPIRACIÓN</label>
@@ -69,12 +65,19 @@
                         </div>
                     </div>
                 </div>
+                <br>
 
                 <div class="grupo ccv">
                     <label for="inputCCV">CVV</label>
                     <input type="text" asp-for="Cvv" maxlength="3">
                 </div>
             </div>
+            <br>
+            <center><div class="grupo">
+                <label asp-for="MontoTotal" class="control-label">MONTO TOTAL</label>
+                <input asp-for="MontoTotal" data-thousands="," data-decimal="." maxlength="8" autocomplete="off" readonly/>
+            </div></center>
+            <br>
             <center><button type="submit" class="btn btn-dark" id="envio">REALIZAR PAGO</button></center>
         </form>
 

@@ -26,11 +26,11 @@ namespace Inkasign.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(Decimal MontoTotal)
+        public IActionResult Index(Decimal monto)
         {
             Pago pago = new Pago();
             pago.UserID = _userManager.GetUserName(User);
-            pago.MontoTotal = MontoTotal;
+            pago.MontoTotal = monto;
             return View(pago);
         }
 

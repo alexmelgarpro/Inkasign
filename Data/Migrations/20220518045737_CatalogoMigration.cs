@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Inkasign.Data.Migrations
 {
-    public partial class ContactoMigration : Migration
+    public partial class CatalogoMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,6 +63,22 @@ namespace Inkasign.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_t_contacto", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_pago",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    PaymentDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    NombreTarjeta = table.Column<string>(type: "text", nullable: false),
+                    MontoTotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    UserID = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_pago", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,6 +289,9 @@ namespace Inkasign.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "t_contacto");
+
+            migrationBuilder.DropTable(
+                name: "t_pago");
 
             migrationBuilder.DropTable(
                 name: "t_proforma");
