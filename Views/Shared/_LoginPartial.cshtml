@@ -11,20 +11,17 @@
     IdentityUser myidentity = await Task.Run(() => UserManager.GetUserAsync(User));
     var roles = await Task.Run(() => UserManager.GetRolesAsync(myidentity));
 
-    @if(roles.Contains("admin")){
+    @if(roles.Contains("Admin")){
 
-           
-    <li class="nav-item">
-        <a class="nav-link color" asp-area="" asp-controller="Producto" asp-action="Producto">Producto</a>
-    </li> 
+        <li class="nav-item">
 
-    <li class="nav-item">
-        <a class="nav-link color" asp-area="" asp-controller="Producto" asp-action="Producto">Producto</a>
-    </li> 
-    
+            <a class="nav-link color" asp-area="" asp-controller="Admin" asp-action="Panel"> Panel</a>
+        </li>
 
 
     }
+
+    
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hola @User.Identity?.Name!</a>
     </li>

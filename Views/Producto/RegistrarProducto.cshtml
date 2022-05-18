@@ -1,0 +1,56 @@
+@model Inkasign.Models.Producto
+
+@{
+    ViewData["Title"] = "REGISTRAR PRODUCTO";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+  
+
+    <section id="hero3" class="d-flex align-items-center justify-content-center" style="height: 18px;">
+<h1>¡REGISTRA UN PRODUCTO!</h1>
+
+    </section>
+
+
+<hr />
+<div class="row">
+    <center><div class="col-md-4">
+        <form asp-action="RegistrarProducto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">NOMBRE</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">DESCRIPCIÓN</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label">PRECIO</label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageName" class="control-label">URL DE LA IMAGEN</label>
+                <input asp-for="ImageName" class="form-control" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+            </div>
+                <div style="width: 250px">
+                    <button class="btn btn-block btn-warning" type="submit">REGISTRAR PRODUCTO</button>
+                </div>
+        </form>
+    </div></center>
+</div>
+        </div>
+
+
+<div>
+    <a asp-action="ListarProducto" class="btn btn-info" style="font-size: 15px;">LISTA DE PRODUCTOS</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

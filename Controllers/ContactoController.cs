@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Inkasign.Models;
 using Inkasign.Data;
 
-namespace appPolnice.Controllers
+namespace Inkasign.Controllers
 {
     public class ContactoController : Controller
     {

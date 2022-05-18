@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Inkasign.Models;
 
-namespace appPolnice.Controllers;
+namespace Inkasign.Controllers;
 
 public class HomeController : Controller
 {

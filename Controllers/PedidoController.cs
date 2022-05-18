@@ -10,7 +10,7 @@ using Inkasign.Data;
 using Microsoft.AspNetCore.Authorization;
 using System.Dynamic;
 
-namespace ajinomoto_app.Controllers
+namespace Inkasign.Controllers
 {
 
     [Authorize(Roles = "Admin")]
