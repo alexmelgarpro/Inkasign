@@ -1,0 +1,112 @@
+@model Inkasign.Models.Pago
+
+@{
+    ViewData["Title"] = "Pago con Tarjeta - ";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pago con tarjeta de credito</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/estilos.css">
+</head>
+<body>
+    <section id="catalogue" class="biografia section-bggg">
+    <div class="contenedor">
+        <div class="section-title">
+        <h2 aling = "center "data-aos="fade-in">COMPRA CON LA TARJETA DE TU PREFERENCIA</h2>
+        </div>
+        <br>
+        <!-- Formulario -->
+        <form method="post" asp-action="Pagar" id="formulario-tarjeta" class="formulario-tarjeta">
+            <center><div class="grupo">
+                <label>MONTO A PAGAR</label>
+                <input type="text" asp-for="MontoTotal" data-thousands="," data-decimal="." maxlength="8" autocomplete="off" readonly/>
+            </div></center>
+            <br>
+
+            <center><div class="grupo">
+                <label for="inputNumero">NÚMERO DE TARJETA</label>
+                <input type="text" asp-for="NumeroTarjeta" maxlength="16" autocomplete="off">
+            </div></center>
+            <center><div class="grupo">
+                <label for="inputNombre">NOMBRE</label>
+                <input type="text" asp-for="NombreTarjeta" maxlength="19" autocomplete="off">
+            </div></center>
+            <div class="flexbox">
+               <center> <div class="grupo expira">
+                    <label for="selectMes">EXPIRACIÓN</label>
+                    <div class="flexbox">
+                        <div class="grupo-select">
+                            <select name="mes" id="selectMes">
+                                <option selected>01</option>
+                                <option selected>02</option>
+                                <option selected>03</option>
+                                <option selected>04</option>
+                                <option selected>05</option>
+                                <option selected>06</option>
+                                <option selected>07</option>
+                                <option selected>08</option>
+                                <option selected>09</option>
+                                <option selected>10</option>
+                                <option selected>11</option>
+                                <option selected>12</option>
+                            </select>
+                            <i class="fas fa-angle-down"></i>
+                        </div> <center>
+                        <div class="grupo-select">
+                            <select name="año" id="selectYear">
+                                <option selected>2021</option>
+                                <option selected>2022</option>
+                                <option selected>2023</option>
+                                <option selected>2024</option>
+                                <option selected>2025</option>
+                                <option selected>2026</option>
+                                <option selected>2027</option>
+                            </select>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo ccv">
+                    <label for="inputCCV">CVV</label>
+                    <input type="text" asp-for="Cvv" maxlength="3">
+                </div>
+            </div>
+            <center><button type="submit" class="btn btn-dark" id="envio">REALIZAR PAGO</button></center>
+        </form>
+
+        <h3>@ViewData["Message"]</h3>
+
+        <br><br><br>
+        
+
+    </div>
+    <div class="container">
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="~/js/main.js"></script>
+    
+ <script type="text/javascript">
+
+      const btnEnvio = document.querySelector('#envio');
+
+      btnEnvio.addEventListener('click' , () => {
+
+          setTimeout(() => {
+            
+            window.location.href="https://localhost:5001/Pago/Confirmacion";
+
+          } , 3000)
+      })
+       
+
+
+    </script>
+
+</body>
+</html>
+
+
