@@ -29,6 +29,7 @@ namespace Inkasign.Controllers
         public IActionResult Index(Decimal MontoTotal)
         {
             Pago pago = new Pago();
+            pago.UserID = _userManager.GetUserName(User);
             pago.MontoTotal = MontoTotal;
             return View(pago);
         }

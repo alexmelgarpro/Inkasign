@@ -19,10 +19,10 @@
         </div>
         <br>
         <!-- Formulario -->
-        <form method="post" asp-action="Pagar" id="formulario-tarjeta" class="formulario-tarjeta">
+        <form method="post" asp-action="Pagar">
             <center><div class="grupo">
-                <label>MONTO A PAGAR</label>
-                <input type="text" asp-for="MontoTotal" data-thousands="," data-decimal="." maxlength="8" autocomplete="off" readonly/>
+                <label asp-for="MontoTotal" class="control-label">MONTO TOTAL</label>
+                <input asp-for="MontoTotal" data-thousands="," data-decimal="." maxlength="8" autocomplete="off" readonly/>
             </div></center>
             <br>
 

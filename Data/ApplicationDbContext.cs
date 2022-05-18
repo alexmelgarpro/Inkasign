@@ -24,11 +24,12 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Inkasign.Models.Contacto> DataContactos { get; set; }
 
-
-
     public DbSet<Inkasign.Models.Producto> DataProductos { get; set; }
 
     public DbSet<Inkasign.Models.Proforma> DataProforma { get; set; }
+
+    public DbSet<Inkasign.Models.Pago> DataPago { get; set; }
+
 
 
 
