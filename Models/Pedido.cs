@@ -15,7 +15,7 @@ namespace Inkasign.Models
         public Decimal Total { get; set; } 
         public Pago Pago { get; set; }
 
-         public Byte [] archivo {get; set;}
+         public Byte [] archivo {get; set;} = new Byte[1];
         
     }
 }
