@@ -75,7 +75,6 @@ namespace Inkasign.Controllers
             }
             return View(proforma);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Cantidad,Precio,UserID")] Proforma proforma)
@@ -111,7 +110,6 @@ namespace Inkasign.Controllers
         {
             return _context.DataProforma.Any(e => e.Id == id);
         }
-
 
 
     }

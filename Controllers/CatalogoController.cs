@@ -1,75 +1,91 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
+using Inkasign.Models;
+using Inkasign.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Inkasign.Data;
-using Inkasign.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace Inkasign.Controllers
 {
-    public class CatalogoController: Controller
+    public class CatalogoController : Controller
     {
-
-        private readonly ILogger<CatalogoController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public CatalogoController(ApplicationDbContext context,
-            ILogger<CatalogoController> logger,
-            UserManager<IdentityUser> userManager)
+        public CatalogoController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-            _logger = logger;
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(string? searchString)
+        public async Task<IActionResult> Index(string producto)
         {
-            
-            var productos = from o in _context.DataProductos select o;
-          
 
-            if(!String.IsNullOrEmpty(searchString)){
-                productos = productos.Where(s => s.Name.Contains(searchString)); 
-                
+            IQueryable<Producto> productos;
+
+            if(producto == null){
+                productos = from o in _context.DataProductos select o;
+            }else{
+                producto = producto.ToUpper();
+                productos = _context.DataProductos.Where(p => p.Name.Contains(producto));
             }
+
             
             return View(await productos.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int? id){
-            Producto objProduct = await _context.DataProductos.FindAsync(id);
-            if(objProduct == null){
+        public async Task<IActionResult> Detalles(int? id)
+        {
+            Producto objProducto = await _context.DataProductos.FindAsync(id);
+            if(objProducto == null){
                 return NotFound();
             }
-            return View(objProduct);
+
+            ViewBag.MyRouteId = id;
+            return View(objProducto);
         }
+        
+     
+         public async Task<IActionResult> Agregar( int id)
+        {   
+          
+           Console.WriteLine(id);
 
-        public async Task<IActionResult> Add(int? id){
-           var userID = _userManager.GetUserName(User);
-           if(userID == null){
-               ViewData["Message"] = "Por favor debe loguearse antes de agregar un producto";
-               List<Producto> productos = new List<Producto>();
-               return View("Index", productos);
+            var userID = _userManager.GetUserName(User);
+            if(userID == null){
+                ViewData["Message"] = "Por favor, debe loguearse antes de agregar un producto";
+                return RedirectToAction("Index");
+            }else{
+                var producto = _context.DataProductos.Find(id);
+                Proforma proforma;
+                
+                Proforma itemProforma = _context.DataProforma.FirstOrDefault(p => p.UserID.Equals(userID) && p.Producto == producto && p.Status.Equals("Pendiente"));
 
-           }else{
-               var producto = await _context.DataProductos.FindAsync(id);
-               Proforma proforma = new Proforma();
-               proforma.Producto = producto;
-               proforma.Precio = producto.Precio;
-               proforma.Cantidad = 1;
-               proforma.UserID = userID;
-               _context.Add(proforma);
-               await _context.SaveChangesAsync();
-               return RedirectToAction(nameof(Index));
-           }
+                if(itemProforma == null){
+                    
+                    proforma = new Proforma();
+                    proforma.Producto = producto;
+                    proforma.Precio = producto.Precio;
+                    proforma.Cantidad = 1;
+                    proforma.UserID = userID;
+                    _context.Add(proforma);
+                    
+                }else{
+                    itemProforma.Cantidad++;
+                    _context.Update(itemProforma);
+                }
+                
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Proforma");
+            }
+        }
+       
+    
+       
+     
 
-       }
-
-
-
-}
+    }
 }
