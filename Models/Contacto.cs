@@ -18,16 +18,16 @@ namespace Inkasign.Models
 
        public int Id { get; set;}
        [Column("name")]
-       public string Name { get; set;}
+       public string Nombre { get; set;}
 
        [Column("email")]
-       public string Email { get; set;}
+       public string Correo { get; set;}
        [Column("subject")]
        
-       public string Subject { get; set;}
+       public string Asunto { get; set;}
        [Column("comment")]
        
-       public string Comment { get; set;}
+       public string Comentario { get; set;}
        
        
     }

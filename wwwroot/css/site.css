@@ -15,9 +15,50 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: MintCream;
 }
 
-<<<<<<< HEAD
+
+
+/*---Para el color de la pagina---*/
+.general_home{
+  background: MintCream;
+}
+
+
+/*---Para nosotros---*/
+#img1 {
+  border-radius: 10%;
+  width: 350px;
+  height: 200px
+}
+#img1{
+  float: right;
+}
+
+
+
+/*---Para Contactanos,registro,inicio secion---*/
+#content{
+  float: left;
+  line-height: 200%;
+  height: 100%;
+  width: 100%;
+  background: Seashell;
+  margin: 0px;
+  border: 2px solid;
+}
+
+
+
+
+
+
+
+
+
+
+
 .form-register {
   width: 400px;
   background: #24303c;
@@ -29,5 +70,3 @@ body {
   color: white;
   box-shadow: 7px 13px 37px #000;
 }
-=======
->>>>>>> e80af5b98ffa5f80a462c0a84837993ae33a2618
