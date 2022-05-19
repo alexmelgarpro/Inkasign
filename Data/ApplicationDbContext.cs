@@ -29,12 +29,11 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Inkasign.Models.Proforma> DataProforma { get; set; }
 
     public DbSet<Inkasign.Models.Pago> DataPago { get; set; }
+    public DbSet<Inkasign.Models.Pedido> DataPedido { get; set; }
 
+    public DbSet<Inkasign.Models.DetallePedido> DataDetallePedido { get; set; }
 
+    public DbSet<Inkasign.Models.Contacto> DataContacto { get; set; }
 
-
-   
-
-   
 
 }

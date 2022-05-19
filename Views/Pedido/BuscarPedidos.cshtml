@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Búsqueda de pedidos";
+}
+
+<div class="container mt-5">
+
+    <h1 class="text-center">@ViewData["Title"]</h1>
+
+	<div class="row">
+
+        <form asp-action="ListarPedidos" method="GET">
+
+            <div class="form-group row">
+            <label class="control-label">Usuario</label>
+            <input type="text" name="usuario" class="form-control">
+            </div>
+
+            <div class="form-group row">
+            <label class="control-label">Precio</label>
+            <label>Desde:</label>
+            <input type="number" name="precioMenor" class="form-control">
+            <label>Hasta:</label>
+            <input type="number" name="precioMayor" class="form-control">
+            </div>
+
+            <div class="form-group row">
+            <label>Fecha</label>
+            <label>De:</label>
+            <input type="date" name="fechaInicio" class="form-control">
+            <label>Hasta:</label>
+            <input type="date" name="fechaFin" class="form-control">
+            </div>
+
+            <button class="btn btn-success">Buscar</button>
+            <input type="reset" class="btn btn-danger" value="Limpiar">
+
+        </form>
+    </div>
+</div>

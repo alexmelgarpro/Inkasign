@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Inkasign.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220517023556_ContactoMigration")]
-    partial class ContactoMigration
+    [Migration("20220518045737_CatalogoMigration")]
+    partial class CatalogoMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,6 +56,34 @@ namespace Inkasign.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("t_contacto");
+                });
+
+            modelBuilder.Entity("Inkasign.Models.Pago", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("MontoTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("NombreTarjeta")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_pago");
                 });
 
             modelBuilder.Entity("Inkasign.Models.Producto", b =>

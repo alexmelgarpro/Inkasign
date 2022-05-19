@@ -1,0 +1,49 @@
+@model Inkasign.Models.Producto
+
+@{
+    ViewData["Title"] = "DETALLE PRODUCTO";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <section id="hero4" class="d-flex align-items-center justify-content-center" style="height: 18px;">
+<h1>DETALLE DEL PRODUCTO</h1>
+
+    </section>
+
+<div>
+
+    <hr />
+    <center><dl class="row" style="font-size: 18px;">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            S/. @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImageName)
+        </dd>
+    </dl>
+</div></center>
+<br>
+<center><div>
+    <a asp-action="EditarProducto" asp-route-id="@Model.Id" class="btn btn-primary" style="font-size: 20px;">EDITAR</a>
+    </div></center>
+    <br>
+  <div>
+    <a asp-action="ListarProducto" class="btn btn-info" style="font-size: 15px;">LISTA DE PRODUCTOS</a>
+</div>

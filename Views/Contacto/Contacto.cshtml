@@ -1,0 +1,46 @@
+@model Inkasign.Models.Contacto
+
+@{
+    ViewData["Title"] = "Contacto";
+}
+
+<fieldset class="form"> 
+<div class="text-center">
+    <h1 class="display-4">Contáctanos</h1>
+
+
+    <form asp-controller="Contacto">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control form-control-sm" type="text" placeholder="Escribe un nombre" aria-label=".form-control-sm" />
+
+        <label asp-for="Correo" class="control-label"></label>
+        <input asp-for="Correo" class="form-control" placeholder="Ingresa tu email" />
+
+        <label asp-for="Asunto" class="control-label"></label>
+        <input asp-for="Asunto" class="form-control" />
+
+        <label asp-for="Comentario" class="control-label"></label>
+        <input asp-for="Comentario" class="form-control" placeholder="Ingresa un comentario"/>
+
+        <br>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Enviar</button> 
+        </div>               
+
+    </form>  
+
+    <h1>@ViewData["Message"]</h1>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+</fieldset>
+
+
+
+
+
+
+

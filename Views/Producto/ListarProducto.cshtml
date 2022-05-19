@@ -1,0 +1,64 @@
+@model IEnumerable<Inkasign.Models.Producto>
+
+@{
+    ViewData["Title"] = "LISTAR";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <section id="hero" class="d-flex align-items-center justify-content-center" style="height: 10px;">
+<h1>LISTA DE PRODUCTOS</h1>
+
+    </section>
+<br>
+<p>
+    <a asp-action="RegistrarProducto" class="btn btn-info" style="font-size: 15px;">REGISTRAR PRODUCTO</a>
+</p>
+ <div >
+        <div id="contenedor-tabla" class="table-responsive-md" >
+            <table class="table table-striped " style="font-size: 18px;">
+                <thead class="thead-dark">
+        <tr>
+            <th>
+                NOMBRE
+            </th>
+            <th>
+                DESCRIPCIÓN
+            </th>
+            <th>
+                PRECIO
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                S/. @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+   
+               <center><a asp-action="EditarProducto" asp-route-id="@item.Id"  class="btn btn-primary" style="font-size: 15px;">EDITAR</a></center> 
+                <br>
+                <center><a asp-action="DetalleProducto" asp-route-id="@item.Id" class="btn btn-secondary" style="font-size: 15px;">DETALLES</a></center>
+                <br>
+                
+                <center><a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-danger" style="font-size: 15px;" onclick="return confirm('¿Desea eliminar el producto?')">ELIMINAR</a></center>
+
+            </td>
+        </tr>
+}
+       </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+<div>
+   <a asp-action="GetPdf" asp-controller="Producto">Generar Pdf</a>
+</div>
