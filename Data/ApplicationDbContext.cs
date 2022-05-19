@@ -33,4 +33,7 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Inkasign.Models.DetallePedido> DataDetallePedido { get; set; }
 
+    public DbSet<Inkasign.Models.Contacto> DataContacto { get; set; }
+
+
 }
