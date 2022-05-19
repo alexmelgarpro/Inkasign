@@ -17,17 +17,17 @@ namespace Inkasign.Models
 
 
        public int Id { get; set;}
-       [Column("name")]
-       public string Name { get; set;}
+       [Column("Nombre")]
+       public string Nombre { get; set;}
 
-       [Column("email")]
-       public string Email { get; set;}
-       [Column("subject")]
+       [Column("Correo")]
+       public string Correo { get; set;}
+       [Column("Asunto")]
        
-       public string Subject { get; set;}
-       [Column("comment")]
+       public string Asunto { get; set;}
+       [Column("Comentario")]
        
-       public string Comment { get; set;}
+       public string Comentario { get; set;}
        
        
     }
